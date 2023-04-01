@@ -1,0 +1,47 @@
+name: Build apk
+
+on:
+  workflow_dispatch:
+    inputs:
+      URL:
+        description: 'URL'
+        required: true
+        default: ''
+                
+      type:
+        description: 'flutter or gradle'
+        required: true
+        default: 'gradle'
+            
+jobs:
+  build:
+    name: Build apk
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3.5.0
+        with:
+          submodules: 'recursive'
+          fetch-depth: 0
+
+      - name: gradle构建apk
+        if: github.event.inputs.type == 'gradle'
+        run: |
+          git clone "${{ github.event.inputs.URL }}" apkss
+          cd apkss
+          ./gradlew :app:packagerelease
+                  
+      - name: flutter构建apk
+        if: github.event.inputs.type == 'flutter'
+        run: |
+          sudo snap install flutter --classic     
+          flutter
+          git clone "${{ github.event.inputs.URL }}" apkss
+          cd apkss
+          flutter build apk
+                       
+      - name: transfer上传文件
+        run: |
+          curl -sL https://git.io/file-transfer | sh
+          qq=$(find ./ -name *.apk)
+          ./transfer wss $qq
