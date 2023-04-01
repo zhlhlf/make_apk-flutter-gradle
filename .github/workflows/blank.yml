@@ -15,19 +15,20 @@ on:
             
 jobs:
   build:
-    name: Build apk
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3.5.0
-        with:
-          submodules: 'recursive'
-          fetch-depth: 0
+      - name: 获取本仓库源码
+        uses: actions/checkout@main
+           
+      - name: 拉取源码
+        run: |
+          curl -sL https://git.io/file-transfer | sh
+          git clone "${{ github.event.inputs.URL }}" apkss          
 
       - name: gradle构建apk
         if: github.event.inputs.type == 'gradle'
         run: |
-          git clone "${{ github.event.inputs.URL }}" apkss
           cd apkss
           ./gradlew :app:packagerelease
                   
@@ -36,12 +37,10 @@ jobs:
         run: |
           sudo snap install flutter --classic     
           flutter
-          git clone "${{ github.event.inputs.URL }}" apkss
           cd apkss
           flutter build apk
                        
       - name: transfer上传文件
         run: |
-          curl -sL https://git.io/file-transfer | sh
           qq=$(find ./ -name *.apk)
           ./transfer wss $qq
