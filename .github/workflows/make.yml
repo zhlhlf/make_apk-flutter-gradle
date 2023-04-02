@@ -9,9 +9,9 @@ on:
         default: ''
                 
       type:
-        description: 'flutter or gradle'
+        description: 'f or g'
         required: true
-        default: 'gradle'
+        default: 'g'
         
       sh:
         description: 'shell'
@@ -35,14 +35,14 @@ jobs:
           git submodule update
  
       - name: gradle构建apk
-        if: github.event.inputs.type == 'gradle'
+        if: github.event.inputs.type == 'g'
         run: |
           cd apkss
           ${{ github.event.inputs.sh }}
           ./gradlew :app:packagerelease
                   
       - name: flutter构建apk
-        if: github.event.inputs.type == 'flutter'
+        if: github.event.inputs.type == 'f'
         run: |
           sudo snap install flutter --classic     
           flutter
