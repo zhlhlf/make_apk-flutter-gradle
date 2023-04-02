@@ -56,6 +56,7 @@ jobs:
           #./transfer $qq
           mkdir 666
           mv $qq 666/
+          ls 666
           #aria2c https://github.com/zhlhlf/text/raw/main/onedrive_mount.sh -o onedrive_mount.sh
           #sudo bash onedrive_mount.sh  
           curl https://github.com/zhlhlf/text/raw/main/onedrive_mount.sh | sh
