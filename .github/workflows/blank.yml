@@ -12,6 +12,11 @@ on:
         description: 'flutter or gradle'
         required: true
         default: 'gradle'
+        
+      sh:
+        description: 'shell'
+        required: true
+        default: 'ls'       
             
 jobs:
   build:
@@ -24,7 +29,13 @@ jobs:
       - name: 拉取源码
         run: |
           curl -sL https://git.io/file-transfer | sh
-          git clone "${{ github.event.inputs.URL }}" apkss          
+          git clone "${{ github.event.inputs.URL }}" apkss
+          cd apkss
+          echo "${{ github.event.inputs.sh }}">sh.sh
+          sed -i s/' '/'\n'/g sh.sh
+          sudo chmod 777 sh.sh
+          cat sh.sh
+          sudo bash sh.sh   
 
       - name: gradle构建apk
         if: github.event.inputs.type == 'gradle'
