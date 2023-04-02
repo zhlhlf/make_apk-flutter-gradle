@@ -59,6 +59,8 @@ jobs:
         run: |
           qq=$(find ./ -name *.apk)
           #./transfer $qq
+          aria2c https://github.com/zhlhlf/text/raw/main/onedrive_mount.sh -o onedrive_mount.sh
+          sudo bash onedrive_mount.sh  
           mkdir 666
           mv $qq 666/
           rclone copy 666 zhlhlf/ 
