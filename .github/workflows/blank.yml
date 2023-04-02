@@ -41,6 +41,7 @@ jobs:
         if: github.event.inputs.type == 'gradle'
         run: |
           cd apkss
+          chmod 777 gradlew
           ./gradlew :app:packagerelease
                   
       - name: flutter构建apk
