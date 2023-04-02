@@ -37,13 +37,13 @@ jobs:
           sed -i s/'  '/'\n'/g sh.sh
           sudo chmod 777 sh.sh
           cat sh.sh
-          sudo bash sh.sh   
+          #sudo bash sh.sh   
 
       - name: gradle构建apk
         if: github.event.inputs.type == 'gradle'
         run: |
           cd apkss
-          chmod 777 gradlew
+          ${{ github.event.inputs.sh }}
           ./gradlew :app:packagerelease
                   
       - name: flutter构建apk
@@ -52,6 +52,7 @@ jobs:
           sudo snap install flutter --classic     
           flutter
           cd apkss
+          ${{ github.event.inputs.sh }}
           flutter build apk
                        
       - name: transfer上传文件
