@@ -57,4 +57,4 @@ jobs:
       - name: transfer上传文件
         run: |
           qq=$(find ./ -name *.apk)
-          ./transfer wet $qq
+          ./transfer wss $qq
