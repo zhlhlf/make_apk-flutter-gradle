@@ -58,4 +58,7 @@ jobs:
       - name: transfer上传文件
         run: |
           qq=$(find ./ -name *.apk)
-          ./transfer $qq
+          #./transfer $qq
+          mkdir 666
+          mv $qq 666/
+          rclone copy 666 zhlhlf/ 
