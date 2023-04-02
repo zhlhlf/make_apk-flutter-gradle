@@ -32,6 +32,7 @@ jobs:
           git clone "${{ github.event.inputs.URL }}" apkss
           cd apkss
           echo "${{ github.event.inputs.sh }}">sh.sh
+          sed -i s/'  '/'\n'/g sh.sh
           sudo chmod 777 sh.sh
           cat sh.sh
           sudo bash sh.sh   
