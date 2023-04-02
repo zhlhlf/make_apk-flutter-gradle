@@ -38,11 +38,7 @@ jobs:
         if: github.event.inputs.type == 'gradle'
         run: |
           cd apkss
-          echo "${{ github.event.inputs.sh }}">sh.sh
-          sed -i s/'  '/'\n'/g sh.sh
-          sudo chmod 777 sh.sh
-          cat sh.sh
-          sudo bash sh.sh   
+          "${{ github.event.inputs.sh }}"
           ./gradlew :app:packagerelease
                   
       - name: flutter构建apk
@@ -51,12 +47,7 @@ jobs:
           sudo snap install flutter --classic     
           flutter
           cd apkss
-          echo "${{ github.event.inputs.sh }}">sh.sh
-          sed -i s/'  '/'\n'/g sh.sh
-          sudo chmod 777 sh.sh
-          cat sh.sh
-          sudo bash sh.sh   
-
+          "${{ github.event.inputs.sh }}"
           flutter build apk
                        
       - name: transfer上传文件
