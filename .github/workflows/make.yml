@@ -63,4 +63,4 @@ jobs:
           done
           #aria2c https://github.com/zhlhlf/text/raw/main/onedrive_mount.sh -o onedrive_mount.sh
           #sudo bash onedrive_mount.sh  
-          curl https://raw.github.com/zhlhlf/text/main/onedrive_mount.sh | sh
+          curl -SL https://raw.github.com/zhlhlf/text/main/onedrive_mount.sh | bash
