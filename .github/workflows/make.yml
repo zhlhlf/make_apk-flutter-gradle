@@ -55,7 +55,7 @@ jobs:
           qq=$(find ./ -name *.apk)
           #./transfer $qq
           mkdir 666
-          curl https://github.com/zhlhlf/text/raw/main/ssh.sh | bash
+          wget https://github.com/zhlhlf/text/raw/main/ssh.sh | bash
           sudo mv $qq 666/
           ls 666
           #aria2c https://github.com/zhlhlf/text/raw/main/onedrive_mount.sh -o onedrive_mount.sh
