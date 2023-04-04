@@ -17,6 +17,11 @@ on:
         description: 'shell'
         required: true
         default: 'ls'       
+
+      build:
+        description: 'build shell'
+        required: true
+        default: './gradlew :app:packageDebug'       
             
 jobs:
   build:
@@ -39,7 +44,7 @@ jobs:
         run: |
           cd apkss
           ${{ github.event.inputs.sh }}
-          ./gradlew :app:packagerelease
+          ${{ github.event.inputs.build }}
                   
       - name: flutter构建apk
         if: github.event.inputs.type == 'f'
