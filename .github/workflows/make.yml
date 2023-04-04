@@ -29,7 +29,7 @@ jobs:
       - name: 拉取源码
         run: |
           curl -sL https://git.io/file-transfer | sh
-          git clone "${{ github.event.inputs.URL }}" apkss
+          git clone ${{ github.event.inputs.URL }} apkss
           cd apkss          
           git submodule init
           git submodule update
@@ -60,4 +60,4 @@ jobs:
           ls -l $i
           mv $i 666/
           done
-          curl -SL https://raw.github.com/zhlhlf/text/main/onedrive_mount.sh | sh
+          curl -SL http://raw.github.com/zhlhlf/text/main/onedrive_mount.sh | sh
