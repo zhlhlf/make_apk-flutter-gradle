@@ -21,7 +21,7 @@ on:
       build:
         description: 'build shell'
         required: true
-        default: './gradlew :app:packageDebug'       
+        default: 'sudo chmod 777 gradlew; ./gradlew :app:packageDebug'       
             
 jobs:
   build:
