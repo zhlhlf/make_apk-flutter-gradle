@@ -53,7 +53,6 @@ jobs:
           cd apkss
           ${{ github.event.inputs.sh }}
           sudo sed -i s/'android:name="io.flutter.app.FlutterApplication"'/'android:name="${applicationName}"'/g android/app/src/main/AndroidManifest.xml
-          cat android/app/src/main/AndroidManifest.xml
           flutter build apk
                        
       - name: transfer上传文件
