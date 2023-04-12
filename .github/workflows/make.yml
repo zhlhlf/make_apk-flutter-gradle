@@ -52,7 +52,7 @@ jobs:
           flutter
           cd apkss
           ${{ github.event.inputs.sh }}
-          sed s/android:name="io.flutter.app.FlutterApplication"/'android:name="${applicationName}"'/g android/app/src/main/AndroidManifest.xml
+          sed s/'android:name="io.flutter.app.FlutterApplication"'/'android:name="${applicationName}"'/g android/app/src/main/AndroidManifest.xml
           flutter build apk
                        
       - name: transfer上传文件
