@@ -11,7 +11,7 @@ on:
       type:
         description: 'f or g'
         required: true
-        default: 'g'
+        default: 'f'
         
       sh:
         description: 'shell'
