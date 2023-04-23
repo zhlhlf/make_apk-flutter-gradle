@@ -54,7 +54,6 @@ jobs:
           ${{ github.event.inputs.sh }}
           sed -i s/'android:name="io.flutter.app.FlutterApplication"'/'android:name="${applicationName}"'/g android/app/src/main/AndroidManifest.xml
           sed -i s#ext.kotlin_version.*\'.*\'#"ext.kotlin_version = '1.8.20'"#g android/build.gradle
-          sed -i s#'</application>'#'\t\t<meta-data \n\t\t\t\t android:name="flutterEmbedding" \n\t\t\t\t android:value="2" /> \n\t</application>/>'#g android/app/src/main/AndroidManifest.xml
           flutter build apk --no-sound-null-safety
                        
       - name: transfer上传文件
