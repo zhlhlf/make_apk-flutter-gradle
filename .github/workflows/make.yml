@@ -66,4 +66,4 @@ jobs:
           ls -l $i
           mv $i 666/
           done
-          wget http://raw.github.com/zhlhlf/text/main/onedrive_mount.sh && sh onedrive_mount.sh ${{ secrets.RCK }} 临时存放文件
+          wget -q https://raw.githubusercontent.com/zhlhlf/text/main/onedrive_mount.sh && sh onedrive_mount.sh ${{ secrets.RCK }} 临时存放文件
