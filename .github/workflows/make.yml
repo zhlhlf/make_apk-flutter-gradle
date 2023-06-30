@@ -52,8 +52,8 @@ jobs:
           flutter
           cd apkss
           ${{ github.event.inputs.sh }}
-          sed -i s/'android:name="io.flutter.app.FlutterApplication"'/'android:name="${applicationName}"'/g android/app/src/main/AndroidManifest.xml
-          sed -i s#ext.kotlin_version.*\'.*\'#"ext.kotlin_version = '1.8.20'"#g android/build.gradle
+          sed -i s/'android:name="io.flutter.app.FlutterApplication"'/'android:name="${applicationName}"'/g android/app/src/main/AndroidManifest.xml || echo ""
+          sed -i s#ext.kotlin_version.*\'.*\'#"ext.kotlin_version = '1.8.20'"#g android/build.gradle  || echo ""
           flutter build apk #--no-sound-null-safety
                        
       - name: 上传文件到onedrive
